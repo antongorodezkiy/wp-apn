@@ -1,0 +1,209 @@
+/*
+ * http://www.colourlovers.com/palette/3528801/Wheres_my_juice
+ **/
+.wp-apn-admin-settings .clear {
+	clear: both;
+}
+
+.wp-apn-admin-settings .wp-apn-bl {
+	background: url("../img/fabric_of_squares_gray.png");
+	
+	border-radius: 0px 6px 6px 6px;
+	box-shadow: 0px 2px 5px rgba(0,0,0,.3);
+	margin: 15px 10px;
+}
+
+	.wp-apn-admin-settings .wp-apn-bl .in {
+		padding: 15px 30px;
+	}
+	
+	.wp-apn-admin-settings .wp-apn-bl .hdr {
+		padding: 3px 30px;
+		height:40px;
+		line-height:38px;
+		border-bottom: 1px ridge #fff;
+		background: #CE8CAD;
+		border-radius: 0px 6px 0 0;
+		margin: 0;
+	}
+	
+	.wp-apn-admin-settings .wp-apn-bl .hdr h3,
+	.wp-apn-admin-settings .wp-apn-bl .hdr h3 a {
+		color: #fff;
+		font-size: 18px;
+		font-family: sans-serif;
+		margin: 0;
+	}
+	
+.wp-apn-admin-settings .hidden {
+	display: hidden;
+}
+
+.wp-apn-admin-settings label {
+	line-height: 30px;
+}
+
+.wp-apn-admin-settings .nobutton {
+	background: none;
+	border: none;
+	padding: 0;
+}
+
+.wp-apn-admin-settings h2,
+.wp-apn-admin-settings h3 {
+	margin-bottom: 0;
+	line-height:38px;
+	font-weight: normal;
+}
+
+.wp-apn-select {
+	padding:3px;
+}
+
+.wp-apn-select li {
+	height: 17px;
+	padding: 3px;
+	margin: 3px;
+	
+}
+
+.wp-apn-select input {
+	display: block;
+	width: 99.5%;
+}
+
+
+.wp-apn-admin-settings .wp-apn-iframe {
+	width: 100%;
+	height: 450px;
+}
+
+
+.wp-apn-admin-settings code {
+    background: #DEDDD8;
+    box-shadow: 0 0 2px rgba(0,0,0,0.3) inset;
+    border-radius: 3px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #332D2E;
+    display: inline-block;
+}
+
+.wp-apn-admin-settings a {
+    color: #CE8CAD;
+}
+
+.wp-apn-admin-settings blockquote {
+    border-left: 3px solid #CE8CAD;
+    padding: 10px 0 10px 15px;
+}
+
+.wp-apn-admin-settings .logo {
+    text-align: center;
+    padding: 230px 0 15px;
+    background: url('../img/logo.png') no-repeat 50% 15px;
+    color: #CE8CAD;
+    text-transform: uppercase;
+    font-size: 18px;
+	display: block;
+}
+
+.wp-apn-admin-settings textarea {
+	min-height: 100px;
+	resize: vertical;
+}
+
+.wp-apn-admin-settings .tip {
+	text-decoration: none;
+	border-bottom: 1px dotted #CE8CAD;
+}
+
+
+.ui-widget-overlay {
+	position: fixed;
+	background: rgba(0,0,0,0.3);
+}
+
+
+.pure-form input[type="text"], .pure-form input[type="password"], .pure-form input[type="email"], .pure-form input[type="url"], .pure-form input[type="date"], .pure-form input[type="month"], .pure-form input[type="time"], .pure-form input[type="datetime"], .pure-form input[type="datetime-local"], .pure-form input[type="week"], .pure-form input[type="number"], .pure-form input[type="search"], .pure-form input[type="tel"], .pure-form input[type="color"], .pure-form select, .pure-form textarea {
+	padding: 4px;
+}
+
+.wp-apn-shortcodes-wizard .shortcode-selected-post {
+	display: inline-block;
+}
+
+.settings-pure-form .pure-control-group label {
+	width: 25em;
+}
+
+.settings-pure-form .pure-control-group ul {
+	width: 25em;
+	display: inline-block;
+    margin: 0 1em 0 0;
+   
+    vertical-align: middle;
+}
+
+.settings-pure-form .pure-control-group ul label {
+	width: auto;
+	text-align: left;
+}
+
+.wp-apn-override-setting {
+	display: none;
+}
+
+
+.wp-apn-admin-settings .select-with-previews {
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	*display: inline;
+	margin: 0;
+}
+
+.wp-apn-admin-settings .select-with-previews.widefat {
+	display: block;
+	width: auto;
+}
+
+.wp-apn-admin-settings legend {
+	font-size: 18px;
+	color: #666;
+	border-bottom: 1px solid #999;
+	margin-top: 30px;
+}
+
+	.wp-apn-admin-settings legend .fa {
+		margin-right: 12px;
+	}
+
+.wp-apn-admin-settings .wp-apn-logfile-preview {
+	max-height: 500px;
+	overflow-y: scroll;
+}
+
+.wp-apn-admin-settings .wp-apn-logfile-preview code {
+	display: block;
+}
+
+.post-type-wp_apn_notification .widefat td {
+	padding: 10px;
+}
+
+.post-type-wp_apn_notification .widefat td,
+.post-type-wp_apn_notification .widefat td ol,
+.post-type-wp_apn_notification .widefat td p,
+.post-type-wp_apn_notification .widefat td ul {
+	line-height: 1.2em;
+}
+
+.post-type-wp_apn_notification .widefat td ul,
+.post-type-wp_apn_notification .widefat td pre {
+	margin-top: 0px;
+}
+
+.post-type-wp_apn_notification .widefat td pre {
+	font-size: 9px;
+}

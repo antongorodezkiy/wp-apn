@@ -1,0 +1,9 @@
+{
+	"name": "wp-apn",
+	"author": "E.Kozachek",
+	"version": "1.0.0",
+	"dependencies": {
+		"fontawesome": "latest",
+        "pure": "0.5.0"
+	}
+}
