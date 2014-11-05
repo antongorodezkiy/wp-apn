@@ -9,7 +9,17 @@ class WPAPN_ApiController {
 			
 			if (!self::$apn) {
 				$settings = WPAPN_AdminController::getSettings();
-				self::$apn = new WPAPN_APN($settings);
+				
+				try {
+					self::$apn = new WPAPN_APN($settings);
+				} catch(Exception $e) {
+					
+					WPAPN_AdminController::showMessage($e->getMessage(),true);
+					
+					self::$apn = false;
+					return false;
+				}
+				
 			}
 			
 			$post_id = wp_insert_post(array(
@@ -23,7 +33,17 @@ class WPAPN_ApiController {
 			}
 			
 			self::$apn->payloadMethod = 'enhance'; // you can turn on this method for debuggin purpose
-			self::$apn->connectToPush();
+			
+			$connected = true;
+			try {
+				$connected = self::$apn->connectToPush();
+			} catch(Exception $e) {
+				$connected = false;
+			}
+			
+			if (!$connected) {
+				return false;
+			}
 		
 			// adding custom variables to the notification
 				if (!empty($additional_data)) {
@@ -50,12 +70,12 @@ class WPAPN_ApiController {
 			if($send_result) {
 				update_post_meta($post_id, WP_APN_PLUGIN.'-sent-status', 'sent');
 				update_post_meta($post_id, WP_APN_PLUGIN.'-sent-error', '');
-				WPAPN_Plugin::log('APN debug: Sending successful');
+				WPAPN_Plugin::log('APN debug','Sending successful');
 			}
 			else {
 				update_post_meta($post_id, WP_APN_PLUGIN.'-sent-status', 'error');
 				update_post_meta($post_id, WP_APN_PLUGIN.'-sent-error', self::$apn->error);
-				WPAPN_Plugin::log('APN error:'.self::$apn->error);
+				WPAPN_Plugin::log('APN error', self::$apn->error);
 			}
 		
 		
@@ -64,13 +84,20 @@ class WPAPN_ApiController {
 			return $post_id;
 		}
 		
-		public static function sendToUser($user_id) {
-			exit;
+		public static function sendToUser($user_id = null) {
+			
 			$post_id = self::send(
-				'e3d21400afe2fed78bbdceb10c2ce10bedb580efa4402bba04f33178dbd483f7',
+				'e367279673fbc6c7cec14e69d22b10c3b118843df9a61d42f6e34f69ca57e526',
 				'Test notif #1 (TIME:'.date('H:i:s').')'
 			);
-			update_post_meta($post_id, WP_APN_PLUGIN.'-user', $user_id);
+			
+			if ($post_id) {
+				update_post_meta($post_id, WP_APN_PLUGIN.'-user', $user_id);
+			}
+			
+			if (isset($_GET['nn'])) {
+				//exit;
+			}
 		}
 	
 	

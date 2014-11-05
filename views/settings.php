@@ -64,7 +64,7 @@
 										<i class="fa  fa-th-list fa-stack-1x fa-inverse"></i>
 									</span>
 									<?php _e('Show Notifications in Menu', WP_APN_PLUGIN)?>
-									<a href="#!" class="js-tip tip" title="<?php _e('Show Notifications menu item in the right admin sidebar', WP_APN_PLUGIN)?>"><span class="fa fa-question-circle"></span></a>								</label>
+									<a href="#!" class="js-tip tip" title="<?php _e('Show Notifications menu item in the left admin sidebar', WP_APN_PLUGIN)?>"><span class="fa fa-question-circle"></span></a>								</label>
 								<input
 									type="checkbox"
 									name="<?php echo WP_APN_PLUGIN?>[show_post_type]"
@@ -195,14 +195,14 @@
 							</blockquote>
 						</p>-->
 
-					<hr />
-					
-					<div class="row">
-						<button class="button-primary" type="submit">
-							<span class="fa fa-save"></span>
-							<?php _e('Save', WP_APN_PLUGIN)?>
-						</button>
-					</div>
+						<hr />
+						
+						<div class="row">
+							<button class="button-primary" type="submit">
+								<span class="fa fa-save"></span>
+								<?php _e('Save', WP_APN_PLUGIN)?>
+							</button>
+						</div>
 						
 					</div>
 					

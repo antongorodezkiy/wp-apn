@@ -78,9 +78,14 @@ class WPAPN_APN
 
 		$ctx = stream_context_create();
 		stream_context_set_option($ctx, 'ssl', 'local_cert', $this->keyCertFilePath);
-		stream_context_set_option($ctx, 'ssl', 'passphrase', $this->passphrase);
+		
+		if ($this->passphrase) {
+			stream_context_set_option($ctx, 'ssl', 'passphrase', $this->passphrase);
+		}
 
+		
 		$stream = stream_socket_client($server, $err, $errstr, $this->timeout, STREAM_CLIENT_CONNECT|STREAM_CLIENT_PERSISTENT, $ctx);
+		
 		$this->log('debug',"APN: Maybe some errors: $err: $errstr");
 		
 		
@@ -88,11 +93,11 @@ class WPAPN_APN
 			
 			if ($err) {
 				$this->log('error',"APN Failed to connect: $err $errstr");
-				throw new Exception("APN Failed to connect: $err $errstr");
+				//throw new Exception("APN Failed to connect: $err $errstr");
 			}
 			else {
 				$this->log('error',"APN Failed to connect: Something wrong with context");
-				throw new Exception("APN Failed to connect: Something wrong with context");
+				//throw new Exception("APN Failed to connect: Something wrong with context");
 			}
 				
 			return false;
@@ -254,7 +259,7 @@ class WPAPN_APN
 			$FeedbackGateway = $settings['FeedbackGateway'];
 		}
 		
-		if(!file_exists($PermissionFile)) {
+		if(!file_exists($PermissionFile) || !is_file($PermissionFile)) {
 			throw new Exception("APN Failed to connect: APN Permission file not found");
 		}
 		
@@ -270,7 +275,7 @@ class WPAPN_APN
 	
 	public function log($type, $message) {
 		if ($type == 'error' || $this->debug) {
-			WPAPN_Plugin::log($type.": ".$message);
+			WPAPN_Plugin::log($type,$message);
 		}
 	}
 	

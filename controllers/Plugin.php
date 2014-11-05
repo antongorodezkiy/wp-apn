@@ -6,6 +6,16 @@ class WPAPN_Plugin {
 	public static function activation() {
 
 	}
+	
+	public static function initEarlyActions() {
+		add_filter('upload_mimes', array(__CLASS__, 'upload_mimes'));
+	}
+ 
+	// Function to add mime types
+		public static function upload_mimes($mime_types=array()) {
+			$mime_types['pem'] = 'application/x-pem-file';
+			return $mime_types;
+		}
 
 	// plugin actions
 		public static function registerPluginActions($links, $file) {
@@ -52,7 +62,7 @@ class WPAPN_Plugin {
 		return $info;
 	}
 	
-	public function getDocsUrl() {
+	public static function getDocsUrl() {
 		if (file_exists(WP_APN_APPPATH.'/documentation/index_'.WPLANG.'.html')) {
 			$documentation_url = 'documentation/index'.WPLANG.'.html';
 		}
@@ -63,11 +73,11 @@ class WPAPN_Plugin {
 		return $documentation_url;
 	}
 	
-	public function getSettingsUrl() {
+	public static function getSettingsUrl() {
 		return admin_url('options-general.php?page='.WP_APN_PLUGIN);
 	}
 	
-	public function getLogsPath() {
+	public static function getLogsPath() {
 		return WP_CONTENT_DIR.'/'.WP_APN_PLUGIN.'-logs/';
 	}
 	

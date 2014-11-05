@@ -2,6 +2,56 @@
 
 class WPAPN_AdminController {
 	
+	// show message
+		public static function showMessage($message, $errormsg = false) {
+			
+			if (!session_id()) {
+				session_start();
+			}
+			
+			if (!isset($_SESSION[WP_APN_PLUGIN.'admin_notice'])) {
+				$_SESSION[WP_APN_PLUGIN.'admin_notice'] = array();
+			}
+			
+			$_SESSION[WP_APN_PLUGIN.'admin_notice'][] = array(
+				'text' => $message,
+				'error' => $errormsg
+			);
+		}
+		
+		public static function showDirectMessage($message, $errormsg = false) {
+			
+			if ($errormsg) {
+				$css_class = 'error';
+			}
+			else {
+				$css_class = 'updated';
+			}
+			
+			echo '<div class="'.$css_class.'"><p>'.$message.'</p></div>';
+		}
+
+		public static function showAdminNotifications() {
+			if (!session_id()) {
+				session_start();
+			}
+			
+			if (isset($_SESSION[WP_APN_PLUGIN.'admin_notice'])) {
+				foreach($_SESSION[WP_APN_PLUGIN.'admin_notice'] as $key => $notice) {
+					
+					if ($notice['error']) {
+						$css_class = 'error';
+					}
+					else {
+						$css_class = 'updated';
+					}
+					
+					echo '<div class="'.$css_class.'"><p>'.$notice['text'].'</p></div>';
+				}
+				$_SESSION[WP_APN_PLUGIN.'admin_notice'] = array();
+			}
+		}
+	
 	// settings
 		public static function registerMenuPage() {
 			add_options_page(

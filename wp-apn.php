@@ -30,6 +30,9 @@ if (!class_exists('APN')) {
 // plugin actions
 	add_filter('plugin_action_links', array('WPAPN_Plugin','registerPluginActions'), 10, 2);
 
+// early actions
+	WPAPN_Plugin::initEarlyActions();
+	
 function wp_wp_apn_init() {
 
 	if (!class_exists('WPAPN_Model')) {
@@ -69,8 +72,6 @@ function wp_wp_apn_init() {
 		// admin page
 			add_action( 'admin_menu', array('WPAPN_AdminController','registerMenuPage'));
 
-		// toolbar menu
-			add_action('admin_bar_menu', array('WPAPN_AdminController','admin_bar_menu'), 100);
 	}
 }
 add_action('after_setup_theme','wp_wp_apn_init');
