@@ -207,3 +207,13 @@
 .post-type-wp_apn_notification .widefat td pre {
 	font-size: 9px;
 }
+
+
+
+.wp-apn-requirement-success {
+	color: YellowGreen;
+}
+
+.wp-apn-requirement-fail {
+	color: OrangeRed;
+}

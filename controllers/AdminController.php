@@ -64,6 +64,7 @@ class WPAPN_AdminController {
 		}
 	
 		public static function showSettings() {
+			$requirements = WPAPN_Plugin::requirements();
 			include_once(WP_APN_APPPATH.'/views/settings.php');
 		}
 		

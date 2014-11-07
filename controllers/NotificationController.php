@@ -55,6 +55,9 @@ class WPAPN_NotificationController {
 			'show_ui' => (bool)WPAPN_AdminController::getSetting('show_post_type'), 
 			'_builtin' => false,
 			'capability_type' => 'post',
+			'capabilities' => array(
+				'create_posts' => false, // Removes support for the "Add New" function
+			),
 			'menu_icon' => plugins_url('assets/img/notification.png', WP_APN_FILE),
 			'hierarchical' => false,
 			'map_meta_cap' => true,

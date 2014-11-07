@@ -51,6 +51,10 @@ function wp_wp_apn_init() {
 		include_once(WP_APN_APPPATH.'/controllers/ApiController.php');
 	}
 	
+	if (!class_exists('WPAPN_MyApiController')) {
+		include_once(WP_APN_APPPATH.'/controllers/MyApiController.php');
+	}
+	
 	if (!class_exists('WPAPN_NotificationController')) {
 		include_once(WP_APN_APPPATH.'/controllers/NotificationController.php');
 	}
@@ -71,7 +75,7 @@ function wp_wp_apn_init() {
 			
 		// admin page
 			add_action( 'admin_menu', array('WPAPN_AdminController','registerMenuPage'));
-
+			
 	}
 }
 add_action('after_setup_theme','wp_wp_apn_init');

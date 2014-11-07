@@ -40,7 +40,45 @@
 					</div>
 				</div>
 
-			
+				<div class="wp-apn-bl row">
+					<div class="row hdr">
+						<h3>
+							<span class="fa fa-exclamation-triangle"></span>
+							<?php _e('Plugin Requirements', WP_APN_PLUGIN)?>
+						</h3>
+					</div>
+					<div class="row in container">
+						<ul>
+							<?php
+								foreach($requirements as $requirement) {
+									
+									if ($requirement['status']) {
+										?>
+											<li>
+												<span class="fa-stack wp-apn-requirement-success">
+													<i class="fa fa-circle fa-stack-2x"></i>
+													<i class="fa fa-check fa-stack-1x fa-inverse"></i>
+												</span>
+												<?php echo $requirement['name'];?> <?php echo $requirement['success'];?>
+											</li>
+										<?php
+									}
+									else {
+										?>
+											<li>
+												<span class="fa-stack wp-apn-requirement-fail">
+													<i class="fa fa-circle fa-stack-2x"></i>
+													<i class="fa fa-exclamation fa-stack-1x fa-inverse"></i>
+												</span>
+												<?php echo $requirement['name'];?> <?php echo $requirement['fail'];?>
+											</li>
+										<?php
+									}
+								}
+							?>
+						</ul>
+					</div>
+				</div>
 			
 				<form class="wp-apn-content wp-apn-bl settings-pure-form pure-form-aligned pure-form" method="post" action="options.php">
 					
@@ -207,28 +245,6 @@
 					</div>
 					
 				</form>
-				
-				<div class="wp-apn-bl">
-
-					<div class="row hdr">
-						<h3>
-							<span class="fa fa-tasks"></span>
-							<?php _e("Today's log file", WP_APN_PLUGIN)?>
-						</h3>
-					</div>
-			
-					<div class="row in wp-apn-logfile-preview">
-						<code><pre><?php
-							if (file_exists(WPAPN_Plugin::getLogsPath().date('Y-m-d').'.php')) {
-								include_once(WPAPN_Plugin::getLogsPath().date('Y-m-d').'.php');
-							}
-							else {
-								_e("Today's log file doesn't exist", WP_APN_PLUGIN); 
-							}
-							?></pre></code>
-					</div>
-					
-				</div>
 			
 			</div>
 			
@@ -327,6 +343,30 @@
 						</div>
 				
 					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class="pure-u-1">
+			<div class="wp-apn-bl">
+
+				<div class="row hdr">
+					<h3>
+						<span class="fa fa-tasks"></span>
+						<?php _e("Today's log file", WP_APN_PLUGIN)?>
+					</h3>
+				</div>
+		
+				<div class="row in wp-apn-logfile-preview">
+					<code><pre><?php
+						if (file_exists(WPAPN_Plugin::getLogsPath().date('Y-m-d').'.php')) {
+							include_once(WPAPN_Plugin::getLogsPath().date('Y-m-d').'.php');
+						}
+						else {
+							_e("Today's log file doesn't exist", WP_APN_PLUGIN); 
+						}
+						?></pre></code>
 				</div>
 				
 			</div>

@@ -62,6 +62,31 @@ class WPAPN_Plugin {
 		return $info;
 	}
 	
+	// plugin requirements
+		public static function requirements($boolean = false) {
+			$upload_dir_message = __('Logs folder',WP_APN_PLUGIN).': <code>'.self::getLogsPath().'</code>';
+			
+			$requirements = array(
+				array(
+					'name' => $upload_dir_message,
+					'status' => self::createLogsDirectory(),
+					'success' => __('is writable',WP_APN_PLUGIN),
+					'fail' => __('is not writable',WP_APN_PLUGIN)
+				)
+			);
+			
+			if ($boolean) {
+				$status = true;
+				foreach($requirements as $requirement) {
+					$status = $status && $requirement['status'];
+				}
+				return $status;
+			}
+			else {
+				return $requirements;
+			}
+		}
+	
 	public static function getDocsUrl() {
 		if (file_exists(WP_APN_APPPATH.'/documentation/index_'.WPLANG.'.html')) {
 			$documentation_url = 'documentation/index'.WPLANG.'.html';
@@ -79,6 +104,15 @@ class WPAPN_Plugin {
 	
 	public static function getLogsPath() {
 		return WP_CONTENT_DIR.'/'.WP_APN_PLUGIN.'-logs/';
+	}
+	
+	public static function createLogsDirectory() {
+		$log_path = self::getLogsPath();
+		if ( ! file_exists($log_path)) {
+			mkdir($log_path);
+		}
+		
+		return file_exists($log_path);
 	}
 	
 	public static function log($label, $msg) {

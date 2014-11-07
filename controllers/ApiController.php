@@ -1,6 +1,6 @@
 <?php if (!defined('WPINC')) die();
 
-class WPAPN_ApiController {
+abstract class WPAPN_ApiController {
 	
 	protected static $apn = null;
 	
@@ -42,6 +42,7 @@ class WPAPN_ApiController {
 			}
 			
 			if (!$connected) {
+				WPAPN_Plugin::log('APN error', 'Could not connect to the push service');
 				return false;
 			}
 		
@@ -84,20 +85,23 @@ class WPAPN_ApiController {
 			return $post_id;
 		}
 		
-		public static function sendToUser($user_id = null) {
+		public static function simpleSendToUser($user_id, $user_meta_field = 'device-token', $message) {
+			
+			$device_token = get_user_meta($user_id, '_ios_device_token', true);
+			
+			$post_id = self::simpleSendToDevice($device_token, $message);
+			
+			return $post_id;
+		}
+		
+		public static function simpleSendToDevice($device_token, $message) {
 			
 			$post_id = self::send(
-				'e367279673fbc6c7cec14e69d22b10c3b118843df9a61d42f6e34f69ca57e526',
-				'Test notif #1 (TIME:'.date('H:i:s').')'
+				$device_token,
+				$message
 			);
 			
-			if ($post_id) {
-				update_post_meta($post_id, WP_APN_PLUGIN.'-user', $user_id);
-			}
-			
-			if (isset($_GET['nn'])) {
-				//exit;
-			}
+			return $post_id;
 		}
 	
 	
