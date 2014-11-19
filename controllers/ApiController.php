@@ -87,11 +87,15 @@ abstract class WPAPN_ApiController {
 		
 		public static function simpleSendToUser($user_id, $user_meta_field = 'device-token', $message) {
 			
-			$device_token = get_user_meta($user_id, '_ios_device_token', true);
+			$device_tokens = (array)get_user_meta($user_id, $user_meta_field, true);
 			
-			$post_id = self::simpleSendToDevice($device_token, $message);
+			$post_ids = array();
+			foreach($device_tokens as $token) {
+				$post_ids[] = self::simpleSendToDevice($token, $message);
+				update_post_meta($post_id, WP_APN_PLUGIN.'-user', $user_id);
+			}
 			
-			return $post_id;
+			return $post_ids;
 		}
 		
 		public static function simpleSendToDevice($device_token, $message) {

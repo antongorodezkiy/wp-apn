@@ -26,10 +26,6 @@ class WPAPN_NotificationController {
 		
 		// saving
 			add_action('save_post', array(__CLASS__, 'save_post'), 1000);
-
-			if (isset($_GET['nn'])) {
-				WPAPN_ApiController::sendToUser(get_current_user_id());
-			}
 	}
 
 	
