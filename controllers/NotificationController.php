@@ -16,14 +16,6 @@ class WPAPN_NotificationController {
 			add_filter( 'manage_edit-'.self::$type.'_columns', array(__CLASS__, 'custom_columns_registration'), 10 );
 			add_action( 'manage_'.self::$type.'_posts_custom_column', array(__CLASS__, 'custom_columns_views'), 10, 2 );
 		
-		// metaboxes		
-			if ($pagenow == 'post-new.php') {
-				add_filter('cmb_meta_boxes', array(__CLASS__, 'cmb_meta_boxes'));
-			}
-			else if ($pagenow == 'post.php') {
-				add_filter('add_meta_boxes', array(__CLASS__, 'add_meta_boxes'));
-			}
-		
 		// saving
 			add_action('save_post', array(__CLASS__, 'save_post'), 1000);
 	}
@@ -61,19 +53,7 @@ class WPAPN_NotificationController {
 		);
 		register_post_type(self::$type,$register_post_data);
 	}
-	
-	public static function post_row_actions($actions) {
-		global $typenow;
-		if($typenow == self::$type) {
-			unset($actions['view']);
-			unset($actions['inline hide-if-no-js']);
-			unset($actions['edit']);
-			unset($actions['trash']);
-		}
-	 
-		return $actions;
-	}
-	
+
 	public static function custom_columns_registration( $defaults ) {
 		unset($defaults['title']);
 		
@@ -142,128 +122,5 @@ class WPAPN_NotificationController {
 		}
 	}
 	
-	
-	public static function cmb_meta_boxes($meta_boxes) {
-		
-		if (!isset($_GET[self::$type.'_mass_upload'])) {
-			$meta_boxes['eben_song_file_metabox'] = array(
-				'id' => 'eben_song_file_metabox',
-				'title' => __('Song', WP_APN_PLUGIN),
-				'pages' => array(self::$type), // post type
-				'context' => 'normal',
-				'priority' => 'high',
-				'show_names' => true, // Show field names on the left
-				'fields' => array(
-					array(
-						'name' => 'Song File',
-						'desc' => '',
-						'id' => 'song_file',
-						'type' => 'file'
-					),
-				),
-			);
-		}
-	
-		return $meta_boxes;
-	}
-	
-	
-	public static function add_meta_boxes() {
-		
-		if (isset($_GET[self::$type.'_mass_upload'])) {
-			
-			// add meta box for song info
-				add_meta_box(
-					'eben_song_mass_upload',
-					__('Mass Upload', WP_APN_PLUGIN),
-					array(__CLASS__, 'metabox_mass_upload'),
-					self::$type,
-					'normal',
-					'default',
-					array()
-				);
-		}
-		else {
-			// add meta box for song info
-				add_meta_box(
-					'eben_song_song_info',
-					__('Song Info', WP_APN_PLUGIN),
-					array(__CLASS__, 'metabox_song_info'),
-					self::$type,
-					'advanced',
-					'default',
-					array()
-				);
-		}
-	}
-	
-	public static function metabox_song_info($post) {
-		
-		$Song = ebenMusicSongModel::getById($post->ID);
-		
-		if ($Song) {
-			include_once(WP_APN_APPPATH.'/views/metaboxes/song-info.php');
-		}
-	}
-	
-	
-	/*
-	 * On song insert
-	 */ 
-		public static function insert_post_data($data) {
-			global $typenow;
-			
-			if (current_user_can('edit_posts') && $typenow == self::$type && $_POST && $data['post_type'] == self::$type) {
-				$form_data = $_REQUEST;
-		
-					// mass upload
-						if (!empty($_FILES) && !self::$mass_upload_fired) {
-							self::$mass_upload_fired = true;
-							self::mass_upload();
-							
-							wp_redirect(admin_url('edit.php?post_status=just_added&post_type='.self::$type));
-							die();
-						}
-					
-				
-					$song_file_id = $form_data['song_file_id'];
-					$song_file_path = get_attached_file($song_file_id);
-					
-					if (ebenMusicSongModel::songFileIsChanged($form_data['post_ID'],$song_file_path)) {
-						
-						$data['post_title'] = self::getTitleFromID3($song_file_path);
-					
-						$data['post_name'] = sanitize_title($data['post_title']);
-					}
-			}
-			
-			
-			return $data;
-		}
-		
-	
-
-	/*
-	 * On song save
-	 */
-		public static function save_post($song_id) {
-			global $typenow;
-			
-			if (self::$type == $typenow) {
-				
-				if ( (defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE) || !$_POST ) {
-					return;
-				}
-				
-				if (current_user_can('edit_posts')) {
-					$form_data = $_REQUEST;
-					
-					$song_file_id = $form_data['song_file_id'];
-					
-					self::save_song($song_id, $song_file_id);
-				}
-			}
-		}
-
 	
 }
