@@ -372,7 +372,7 @@
 			</div>
 		</div>
 		
-	<!--<div class="pure-u-1">
+	<div class="pure-u-1">
 		<?php
 			$documentation_url = WPAPN_Plugin::getDocsUrl();
 		?>
@@ -389,5 +389,5 @@
 			</div>
 		</div>
 	</div>
-		-->
+		
 </div>

@@ -1,12 +1,12 @@
 <?php
 /*
-	Plugin Name: WordPress APN
+	Plugin Name: WordPress Apple Push Notifications Plugin
 	Plugin URI: http://wp-apn.wp.teamlead.pw/
-	Description: WordPress APN Plugin
+	Description: Plugin gives you an API to send Apple Push Notifications from your WordPress site.
 	Version: 1.0.0
-	Author: E.Kozachek
+	Author: Teamlead Power
 	Author URI: http://teamlead.pw/
-	License: GPLv2
+	License: BSD
 	Text Domain: wp-apn
 */
 

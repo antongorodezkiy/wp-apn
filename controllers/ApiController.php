@@ -108,5 +108,28 @@ abstract class WPAPN_ApiController {
 			return $post_id;
 		}
 	
+		public static function advancedSendToUser($user_id, $user_meta_field = 'device-token', $message, $additional_data) {
+			
+			$device_tokens = (array)get_user_meta($user_id, $user_meta_field, true);
+			
+			$post_ids = array();
+			foreach($device_tokens as $token) {
+				$post_ids[] = self::advncedSendToDevice($token, $message, $additional_data);
+				update_post_meta($post_id, WP_APN_PLUGIN.'-user', $user_id);
+			}
+			
+			return $post_ids;
+		}
+		
+		public static function advncedSendToDevice($device_token, $message, $additional_data) {
+			
+			$post_id = self::send(
+				$device_token,
+				$message,
+				$additional_data
+			);
+			
+			return $post_id;
+		}
 	
 }

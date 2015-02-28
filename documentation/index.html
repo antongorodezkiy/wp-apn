@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>WordPress Apple Push Notifications Plugin Documentation</title>
+
+	<link rel="stylesheet" href="css/pure.css" />
+	<link rel="stylesheet" href="css/prism.css" />
+	<link rel="stylesheet" href="css/style.css" />
+
+	<!--[if lt IE 9]>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+
+	<div id="layout">
+		<!-- Menu toggle -->
+		<a href="#menu" id="menuLink" class="menu-link">
+			<!-- Hamburger icon -->
+			<span></span>
+		</a>
+	
+		<div id="menu">
+			<div class="pure-menu pure-menu-open">
+				<a class="logo" href="http://linked-articles.demo.teamlead.pw/">
+					<span>Apple Push</span>
+					<span>Notifications</span>
+					<span>Documentation</span>
+				</a>
+	
+				<ul>
+					<li><a href="#main">
+						<span class="title">About & Features</span>
+						<span class="question">What did you get?</span>
+					</a></li>
+					<li><a href="#install">
+						<span class="title">Installation & Contents</span>
+						<span class="question">How to install?</span>
+					</a></li>
+					<li><a href="#quick">
+						<span class="title">Quick start guide</span>
+						<span class="question">How to hit the ground running?</span>
+					</a></li>
+					<li><a href="#troubleshooting">
+						<span class="title">Troubleshooting</span>
+						<span class="question">Is something going wrong?</span>
+					</a></li>					
+					<li><a href="#setup">
+						<span class="title">Set Up</span>
+						<span class="question">Where to start?</span>
+					</a></li>
+					<li><a href="#use">
+						<span class="title">Usage</span>
+						<span class="question">How to use?</span>
+					</a></li>
+					<li><a href="#advanced">
+						<span class="title">Advanced usage</span>
+						<span class="question">Are you developer?</span>
+					</a></li>
+					<li><a href="#support">
+						<span class="title">Support</span>
+						<span class="question">Need support?</span>
+					</a></li>
+					<li><a href="#credits">
+						<span class="title">Credits</span>
+						<span class="question">Sources used</span>
+					</a></li>
+					<li><a href="#changelog">
+						<span class="title">Changelog</span>
+						<span class="question"></span>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	
+	
+	
+	
+	
+	
+		<div id="main" class="doc-section">
+			<div class="header">
+				<div class="logo-header"></div>
+				<h1>WordPress Apple Push Notifications Plugin Documentation</h1>
+				<h2>What did you get?</h2>
+			</div>
+	
+			<div class="content">
+				<h4 class="content-subhead">About</h4>
+				<p>
+					Thank you for usign the WordPress Apple Push Notifications Plugin.
+				</p>
+				<p>This plugin gives you an API to send Apple Push Notifications from your WordPress site.</p>
+				<p>You can send unlimited number of Push Notifications.</p>
+				<p>All sent notifications and all attempts are saved as posts of custom post type.</p>
+				
+				<blockquote>
+					More about <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html" target="_blank">Apple Push Notifications</a>
+				</blockquote>
+				
+				
+				<h4 class="content-subhead">Features</h4>
+				<ul>
+					<li>API for sending single Push Notifcations.</li>
+					<li>Separate CPT for Notifications.</li>
+					<li>Logging.</li>
+					<li>Certificates uploading support.</li>
+					<li>Development/Production modes support.</li>
+					<li>Developer-friendly (used OOP paradigm).</li>
+					<li>Well-documented.</li>
+					<li>Fully translatable to any language using .po files.</li>
+				</ul>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#install">Installation</a> section to know how to install the plugin.</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		<div id="install" class="doc-section">
+			<div class="header">
+				<h1>Installation</h1>
+				<h2>How to install?</h2>
+			</div>
+	
+			<div class="content">
+				<h4 class="content-subhead">Installation steps</h4>
+	
+				<h4>Regular installation</h4>
+				<ol>
+					<li><s>Get the package</s> Ok, you got the plugin package :)</li>
+					<li>Upload plugin package with WordPress <code>http://yoursite.com/wp-admin/plugin-install.php?tab=upload</code> or WordPress Multisite <code>http://yoursite.com/wp-admin/network/plugin-install.php?tab=upload</code></li>
+					<li>Activate <code>WordPress Apple Push Notifications Plugin</code> on the WordPress Plugins page <code>http://yoursite.com/wp-admin/plugins.php</code></li>
+					<li>That's all! You can start from <a href="#quick">Quick start guide</a></li>
+					<li>After plugin activation please go to plugin's settings on the page <code>http://yoursite.com/wp-admin/options-general.php?page=wp-apn</code> to <a href="#setup">Set Up</a> the plugin.</li>
+				</ol>
+				
+				<h4>cPanel installation</h4>
+				<ol>
+					<li>Upload plugin package through the cPanel File Manager to the <code>/wp-content/plugins/</code></li>
+					<li>Extract plugin package contents to the <code>/wp-content/plugins/</code> folder</li>
+					<li>Activate <code>WordPress Apple Push Notifications Plugin</code> on the WordPress Plugins page <code>http://yoursite.com/wp-admin/plugins.php</code></li>
+					<li>That's all! You can start from <a href="#quick">Quick start guide</a></li>
+					<li>After plugin activation please go to plugin's settings on the page <code>http://yoursite.com/wp-admin/options-general.php?page=wp-apn</code> to <a href="#setup">Set Up</a> the plugin.</li>
+				</ol>
+				
+				<h4>FTP installation</h4>
+				<ol>
+					<li>Unpack the plugin package with any archiving tool, which supports <a href="http://en.wikipedia.org/wiki/Zip_%28file_format%29" target="_blank">ZIP file format</a></li>
+					<li>Upload files folder to the <code>/wp-content/plugins/</code> to the server with any FTP client application, for example <a href="https://filezilla-project.org/" target="_blank">FileZilla</a></li>
+					<li>Activate <code>WordPress Apple Push Notifications Plugin</code> on the WordPress Plugins page <code>http://yoursite.com/wp-admin/plugins.php</code></li>
+					<li>That's all! You can start from <a href="#quick">Quick start guide</a></li>
+					<li>After plugin activation please go to plugin's settings on the page <code>http://yoursite.com/wp-admin/options-general.php?page=wp-apn</code> to <a href="#setup">Set Up</a> the plugin.</li>
+				</ol>
+				
+				<blockquote>
+					More about WordPress <a href="http://codex.wordpress.org/Managing_Plugins" target="_blank">Plugins Management</a>
+				</blockquote>
+				
+				<h4 class="content-subhead">Plugin file structure</h4>
+				<pre>
+
+				</pre>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#quick">Quick start guide</a> section to see quick examples of plugin's usage.</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		<div id="quick" class="doc-section">
+			<div class="header">
+				<h1>Quick start guide</h1>
+				<h2>How to hit the ground running?</h2>
+			</div>
+	
+			<div class="content">
+				
+				<p>First of all you need to check plugin requirements.</p>
+				
+				<h4 class="content-subhead">Requirements</h4>
+				
+				<ul>
+					<li>PHP is 5.2 or higher</li>
+					<li>Writable logs folder <code>wp-content/uploads/wp-apn-logs</code></li>
+				</ul>
+				
+				<blockquote>
+					More about <a href="https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/CommunicatingWIthAPS.html" target="_blank">Apple requirements</a>
+				</blockquote>
+				
+				<p>After activation plugin will create new post type for Push notifications <code>wp_apn_notification</code>.</p>
+				<p><img src="img/screenshots/activation.jpeg" alt="Activation" /></p>
+				
+				<p>You can find WordPress Apple Push Notifications Plugin settings page by following url address like this one <code>http://yoursite.com/wp-admin/options-general.php?page=wp-apn</code></p>
+				<p>If some requirement is not met, you will see it on settings page:</p>
+				<p><img src="img/screenshots/requirements.jpeg" alt="Error notification" /></p>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#setup">Set Up</a> section to know more about plugin global settings.</p>
+				<p>Check <a href="#troubleshooting">Troubleshooting</a> if you face some troubles.</p>
+
+			</div>
+		</div>
+		
+		
+		
+		<div id="troubleshooting" class="doc-section">
+			<div class="header">
+				<h1>Troubleshooting</h1>
+				<h2>Is something going wrong?</h2>
+			</div>
+	
+			<div class="content">
+				
+				<p>The theme of APNs is deeper and is out of scope of the documentation of our plugin.</p>
+				<p>On your way to succeed with APNs you may face some annoying troubles.</p>
+				<p>Do not despite! We all faced them too :)</p>
+				<p>Here are some links, which may help you in your business:</p>
+				
+				<ul>
+					<li>
+						<a href="http://www.raywenderlich.com/32960/apple-push-notification-services-in-ios-6-tutorial-part-1">
+							Apple Push Notification Services in iOS 6 Tutorial
+						</a>
+					</li>
+					<li>
+						<a href="http://www.make-awesome.com/2010/10/hey-apple-your-push-notifications-api-sucks/">
+							Hey Apple, Your Push Notifications API Sucks
+						</a>
+					</li>
+					<li>
+						<a href="https://blog.serverdensity.com/how-to-build-an-apple-push-notification-provider-server-tutorial/">
+							How to build an Apple Push Notification provider server (tutorial)
+						</a>
+					</li>
+				</ul>
+				
+				<p>If you faced the following error:</p>
+<pre><code class="language-bash">
+	stream_socket_client(): unable to connect to ssl://gateway.push.apple.com:2195 (Permission denied)
+</code></pre>
+				
+				<p>Try to check the following things (examples for CentOS):</p>
+				<ul>
+					<li>
+						<p>Add/check rule in your server's firewall (e.g. <code>/etc/sysconfig/iptables</code>)</p>
+<pre><code class="language-bash">
+	-A INPUT -p tcp --dport 2195 - J ACCEPT
+</code></pre>
+						
+						<p>Do not forget to restart firewall:</p>
+						
+<pre><code class="language-bash">
+	[root]# service iptables restart
+	[root]# service httpd restart
+</code></pre>
+					</li>
+					<li>
+						<p>Check if output network connections allowed on your server:</p>
+						
+<pre><code class="language-bash">
+	[root]# setsebool -P httpd_can_network_connect 1
+</code></pre>
+					</li>
+				</ul>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#setup">Set Up</a> section to know more about plugin global settings.</p>
+
+			</div>
+		</div>
+		
+		
+		
+		<div id="setup" class="doc-section">
+			<div class="header">
+				<h1>Set up</h1>
+				<h2>Where to start?</h2>
+			</div>
+	
+			<div class="content">
+				<p>
+					You can find WordPress Apple Push Notifications Plugin settings, requirements and documentation on the page <code>http://yoursite.com/wp-admin/options-general.php?page=wp-apn</code>
+				</p>
+				<p>In settings you can hide the new post type from the admin menu. This is useful, when you do not want to unnecessary item to take the space of the screen.</p>
+				<p>You can turn it on again at any moment.</p>
+				
+				<p><img src="img/screenshots/settings.jpeg" alt="Settings" /></p>
+				
+				<p>You can set APN Mode to Sandbox or Production. The certificate and the certificate's password (if set), will be used from the section respectivly.</p>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#use">Usage</a> section to know more about use cases.</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		<div id="use" class="doc-section">
+			<div class="header">
+				<h1>Usage</h1>
+				<h2>How to use?</h2>
+			</div>
+	
+			<div class="content">
+				<div class="content-subhead">Sending</div>
+				
+				<blockquote>
+					The process of sending push notifications is programmatic. There is no user interface for sending. Please check <a href="#advanced">Advanced Usage</a> section to find how send notifications.
+				</blockquote>
+				
+				<div class="content-subhead">Notifications</div>
+		
+					<p>You can go to APNs menu item to see the list of sent notifications.</p>
+					<p><img src="img/screenshots/notifications.jpeg" alt="Notifications" /></p>
+						
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#advanced">Advanced Usage</a> section to get full control on the plugin functionality and look and feel.</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div id="advanced" class="doc-section">
+			<div class="header">
+				<h1>Advanced Usage</h1>
+				<h2>Are you developer?</h2>
+			</div>
+	
+			<div class="content">
+				<p>
+					So you're developer.
+					We take care about you, no matter, whether you get our plugin from the client
+					or bought it for your purposes. You don't need to change anything inside the plugin (at least we hope so).
+				</p>
+
+				<p>
+					You will have full control on the plugin right from other plugin,
+					or theme, or whatever you use in your wordpress.
+				</p>
+				
+				<div class="content-subhead">Code control</div>
+				<p>
+					You can override any of plugins classes somewhere before the <code>after_setup_theme</code> action:
+				</p>
+				<ul>
+					<li>
+						<code>WPAPN_Plugin</code> - some main functions
+					</li>
+					<li>
+						<code>WPAPN_AssetsController</code> - css and js assets including
+					</li>
+					<li>
+						<code>WPAPN_AdminController</code> - admin functions
+					</li>
+					<li>
+						<code>WPAPN_NotificationController</code> - custom APN post type and related functions
+					</li>
+					<li>
+						<code>WPAPN_ApiController</code> - few API functions
+					</li>
+					<li>
+						<code>WPAPN_MyApiController</code> - dummy api class, which extends <code>WPAPN_ApiController</code>. This file is made to be replaced by your own.
+					</li>
+				</ul>
+				
+				<blockquote>
+					We do not store users' device tokens. We assume you'll store device tokens in the <code>wp_usermeta</code> table
+				</blockquote>
+				
+				
+				<p>To send simple push notifications to the user:</p>
+				
+<pre><code class="language-php">
+// $user_id - some WordPress user id
+// $order_id - some integer
+// $Order - some example model
+// the key '_ios_device_token' will be searched in the user meta of the user with ID=$user_id; you can
+$message = sprintf(__('Your order %s is being made'),'#'.$order_id);
+$result = WPAPN_MyApiController::simpleSendToUser($user_id, '_ios_device_token', $message);
+if (!$result) {
+	$Order->clientNotified($order_id);
+}
+</code></pre>
+
+				<p>To send some additional data with push notification:</p>
+				
+<pre><code class="language-php">
+$notification_id = WPAPN_MyApiController::advancedSendToUser(
+	$user_id,
+	'_ios_device_token',
+	$message,
+	array(
+		'place_id' => $place_id
+	)
+);
+</code></pre>
+				
+				<h4 class="content-subhead">What next?</h4>
+				<p>Check <a href="#support">Support</a> section to get in touch with our support team.</p>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		<div id="support" class="doc-section">
+			<div class="header">
+				<h1>Support</h1>
+				<h2>Need support?</h2>
+			</div>
+	
+			<div class="content">
+				<p>Once again, thank you so much for getting our plugin. We would be glad to help you in any questions related to this plugin.</p>
+				<p>
+					We want to make your plugin usage as much easier as we could.
+				</p>
+				<p>If you want, you can contact us, you can do this by email: <a href="mailto:support@teamlead.pw">support@teamlead.pw</a> or through the support forum at http://support.wp.teamlead.pw (coming soon)</p>
+				<p>This plugin is free and we will appreciate any donations from you - <a href="http://wp-apn.wp.teamlead.pw/">Donate us</a>.</p>
+				<p>Also please find us on CodeCanyon: <a href="http://codecanyon.net/user/antongorodezkiy/portfolio">http://codecanyon.net/user/antongorodezkiy/portfolio</a></p>
+				<p>The plugin is Open Source, so feel free to fork us on Guthib: <a href="https://github.com/antongorodezkiy/wp-apn">https://github.com/antongorodezkiy/wp-apn</a></p>
+			</div>
+		</div>
+		
+		
+		<div id="credits" class="doc-section">
+			<div class="header">
+				<h1>Credits</h1>
+				<h2>Sources used</h2>
+			</div>
+	
+			<div class="content">
+				<blockquote>
+					<ul>
+						<li>
+							Icons &copy; <a href="http://fortawesome.github.io/Font-Awesome/" target="_blank">Font Awesome&nbsp;<span class="fa fa-external-link-square"></span></a>
+						</li>
+						<li>
+							Logo Icon &copy; <a href="http://thenounproject.com/term/message-notification/23246/" target="_blank">aguycalledgary&nbsp;<span class="fa fa-external-link-square"></span></a>
+						</li>
+						<li>
+							CSS Framework &copy; <a href="http://purecss.io/" target="_blank">Pure.css&nbsp;<span class="fa fa-external-link-square"></span></a>
+						</li>
+						<li>
+							Color theme &copy; <a href="http://www.colourlovers.com/palette/3528801/Wheres_my_juice" target="_blank">superchicami&nbsp;<span class="fa fa-external-link-square"></span></a>
+						</li>
+					</ul>
+				</blockquote>
+			</div>
+		</div>
+		
+		
+		<div id="changelog" class="doc-section">
+			<div class="header">
+				<h1>Changelog</h1>
+			</div>
+	
+			<div class="content">
+				
+				<h4 class="content-subhead">Version 1.0</h4>
+				
+				<ul>
+					<li>The plugin released</li>
+				</ul>
+				
+			</div>
+		</div>
+		
+		
+	</div>
+
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/prism.js"></script>
+	<script type="text/javascript" src="js/jquery-scrollspy.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+</body>
+</html>

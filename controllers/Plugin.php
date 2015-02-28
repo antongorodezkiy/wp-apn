@@ -69,7 +69,7 @@ class WPAPN_Plugin {
 			$requirements = array(
 				array(
 					'name' => $upload_dir_message,
-					'status' => self::createLogsDirectory(),
+					'status' => self::createLogsDirectory() && is_writable(self::getLogsPath()),
 					'success' => __('is writable',WP_APN_PLUGIN),
 					'fail' => __('is not writable',WP_APN_PLUGIN)
 				)

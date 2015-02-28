@@ -16,8 +16,6 @@ class WPAPN_NotificationController {
 			add_filter( 'manage_edit-'.self::$type.'_columns', array(__CLASS__, 'custom_columns_registration'), 10 );
 			add_action( 'manage_'.self::$type.'_posts_custom_column', array(__CLASS__, 'custom_columns_views'), 10, 2 );
 		
-		// saving
-			add_action('save_post', array(__CLASS__, 'save_post'), 1000);
 	}
 
 	
@@ -53,7 +51,8 @@ class WPAPN_NotificationController {
 		);
 		register_post_type(self::$type,$register_post_data);
 	}
-
+	
+	
 	public static function custom_columns_registration( $defaults ) {
 		unset($defaults['title']);
 		
